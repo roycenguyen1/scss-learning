@@ -1,0 +1,25 @@
+$primary-color: #00a7e1;
+$dark-color: #00171f;
+$secondary-color: #003459;
+$medium-color: #007ea7;
+$light-color: #fff;
+$accent-color: #ff7300;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $dark-color;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
