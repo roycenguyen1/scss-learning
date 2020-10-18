@@ -1,9 +1,24 @@
 $primary-color: #00a7e1;
-$dark-color: #00171f;
+$dark-color: #001f04;
 $secondary-color: #003459;
 $medium-color: #007ea7;
 $light-color: #fff;
 $accent-color: #ff7300;
+$accent-font: "Satisfy", cursive;
+$main-font: "Roboto", sans-serif;
+
+@mixin flexbox($justify: center, $direction: row) {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
 
 * {
   box-sizing: border-box;
@@ -21,5 +36,208 @@ a {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: $main-font;
+}
+
+.buffer {
+  height: 100px;
+}
+
+// Header
+header {
+  top: 0;
+  background-color: $dark-color;
+  color: $light-color;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  .container {
+    @include flexbox(space-between);
+
+    .hamburger {
+      display: none;
+    }
+
+    .logo {
+      font-family: $accent-font;
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: 0.15rem;
+
+      span {
+        color: $primary-color;
+      }
+    }
+
+    a {
+      color: $light-color;
+    }
+
+    .nav {
+      ul {
+        @include flexbox();
+
+        li {
+          margin: 0 0.5rem;
+
+          a {
+            padding: 0.5rem;
+            position: relative;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+
+            &:hover {
+              color: $accent-color;
+            }
+
+            &::before,
+            &::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 3px;
+              background-color: $primary-color;
+              transform: scaleX(0);
+              transform-origin: left;
+              transition: transform 0.5s ease;
+            }
+
+            &::after {
+              top: auto;
+              bottom: 0;
+              transform-origin: right;
+            }
+
+            &:hover::before,
+            &:hover::after {
+              transform: scaleX(1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+main {
+  @include flexbox($direction: column);
+  margin-top: 2rem;
+
+  .page-title {
+    font-size: 2rem;
+    font-family: $accent-font;
+    color: $primary-color;
+    margin-bottom: 2rem;
+  }
+
+  .video-wrapper {
+    width: 100%;
+    & > div {
+      width: 50%;
+      margin: auto;
+      @include flexbox($direction: column);
+
+      .video-title {
+        font-size: 1.5rem;
+        color: $dark-color;
+        margin-bottom: 1rem;
+      }
+
+      .video {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%;
+
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  background: $secondary-color;
+  color: $accent-color;
+  padding: 2rem 0;
+  margin-top: 5rem;
+}
+
+// Media Queries
+@media (max-width: 850px) {
+  header {
+    .container {
+      width: 90%;
+
+      .hamburger {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1;
+
+        .fa-times {
+          display: none;
+        }
+      }
+
+      .logo {
+        font-size: 2rem;
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100vh;
+        transform: translateX(150%);
+        transition: transform 0.5s ease-in-out;
+
+        ul {
+          background: rgba($secondary-color, 0.95);
+          width: 100%;
+          height: 100%;
+          @include flexbox($direction: column);
+
+          li {
+            margin: 1rem 0;
+
+            a {
+              display: inline-block;
+              padding: 0.5rem 0;
+            }
+          }
+        }
+      }
+    }
+    &.open {
+      .hamburger {
+        .fa-times {
+          display: block;
+          font-size: 1.8rem;
+        }
+
+        .fa-bars {
+          display: none;
+        }
+      }
+
+      .nav {
+        transform: translateX(0);
+      }
+    }
+  }
 }
