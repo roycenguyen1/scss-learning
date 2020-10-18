@@ -1,0 +1,16 @@
+$primary-color: #00a7e1;
+$dark-color: #00171f;
+$secondary-color: #003459;
+$medium-color: #007ea7;
+$light-color: #fff;
+$accent-color: #ff7300;
+$accent-font: "Satisfy", cursive;
+$main-font: "Roboto", sans-serif;
+
+@mixin flexbox($justify: center, $direction: row) {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
