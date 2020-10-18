@@ -22,6 +22,7 @@ a {
 
 body {
   font-family: $main-font;
+  width: 100%;
 }
 
 .buffer {
@@ -64,8 +65,7 @@ header {
       & > div {
         & > div {
           ul {
-            @include flexbox($direction: column);
-
+            @include flexbox();
             li {
               margin: 0 0.5rem;
 
