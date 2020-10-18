@@ -1,4 +1,4 @@
-// Media Queries
+// Media Queries for tablets
 @media (max-width: 850px) {
   header {
     .container {
@@ -61,5 +61,16 @@
         transform: translateX(0);
       }
     }
+  }
+
+  main .video-wrapper > div {
+    width: 70%;
+  }
+}
+
+// Media Queries for mobile
+@media (max-width: 600px) {
+  main .video-wrapper > div {
+    width: 100%;
   }
 }
