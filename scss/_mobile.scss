@@ -24,24 +24,32 @@
         top: 0;
         right: 0;
         width: 60%;
-        height: 100vh;
-        max-height: 100vh;
+        height: 100%;
         transform: translateX(150%);
         transition: transform 0.5s ease-in-out;
 
-        ul {
+        & > div {
           background: rgba($secondary-color, 0.95);
           width: 100%;
           height: 100vh;
-          max-height: 100vh;
           @include flexbox($direction: column);
 
-          li {
-            margin: 1rem 0;
+          & > div {
+            text-align: center;
+            max-width: 100vw;
+            max-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
 
-            a {
-              display: inline-block;
-              padding: 0.5rem 0;
+            ul {
+              li {
+                margin: 1rem 0;
+
+                a {
+                  display: inline-block;
+                  padding: 0.5rem 0;
+                }
+              }
             }
           }
         }
@@ -61,6 +69,11 @@
 
       .nav {
         transform: translateX(0);
+        & > div {
+          & > div {
+            opacity: 1;
+          }
+        }
       }
     }
   }

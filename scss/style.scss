@@ -61,46 +61,50 @@ header {
     }
 
     .nav {
-      ul {
-        @include flexbox();
+      & > div {
+        & > div {
+          ul {
+            @include flexbox($direction: column);
 
-        li {
-          margin: 0 0.5rem;
+            li {
+              margin: 0 0.5rem;
 
-          a {
-            padding: 0.5rem;
-            position: relative;
-            text-transform: uppercase;
-            font-weight: 500;
-            letter-spacing: 0.1rem;
+              a {
+                padding: 0.5rem;
+                position: relative;
+                text-transform: uppercase;
+                font-weight: 500;
+                letter-spacing: 0.1rem;
 
-            &:hover {
-              color: $accent-color;
-            }
+                &:hover {
+                  color: $accent-color;
+                }
 
-            &::before,
-            &::after {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 3px;
-              background-color: $primary-color;
-              transform: scaleX(0);
-              transform-origin: left;
-              transition: transform 0.5s ease;
-            }
+                &::before,
+                &::after {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 3px;
+                  background-color: $primary-color;
+                  transform: scaleX(0);
+                  transform-origin: left;
+                  transition: transform 0.5s ease;
+                }
 
-            &::after {
-              top: auto;
-              bottom: 0;
-              transform-origin: right;
-            }
+                &::after {
+                  top: auto;
+                  bottom: 0;
+                  transform-origin: right;
+                }
 
-            &:hover::before,
-            &:hover::after {
-              transform: scaleX(1);
+                &:hover::before,
+                &:hover::after {
+                  transform: scaleX(1);
+                }
+              }
             }
           }
         }
